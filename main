@@ -1,0 +1,126 @@
+import java.util.*;
+
+public class Game//main function
+{
+    //these are used to save user inputs
+    public static final String ROCK = "ROCK";
+    public static final String PAPER = "PAPER";
+    public static final String SCISSORS = "SCISSORS";
+    int tc=wc=lc=gp=0;//no.of ties,wins,losses,games played
+    public static void main(String args[]) 
+    {
+      System.out.println("Enter any one of the following inputs:  ");//get input
+      System.out.println("Rock\nPaper\nScissors\n");
+      String playerMove = getPlayerMove();
+      String computerMove = getComputerMove(); 
+      //if tie
+      if (playerMove.equals(computerMove))
+      {
+            System.out.println("Tie");
+            tcount++;
+      }
+      // if playerMove is ROCK         
+      else if (playerMove.equals(Game.ROCK))
+      {
+        if(computerMove.equals(Game.SCISSORS))
+        {
+            wc++;
+            System.out.println("You win");
+        }
+        else
+        {
+            lc++;
+            System.out.println("You lose");
+        }
+      }
+      // if playerMove is PAPER
+      else if (playerMove.equals(Game.PAPER))
+      {
+        if(computerMove.equals(Game.ROCK))
+        {
+            wc++;
+            System.out.println("You win");
+        }
+        else
+        {
+            lc++;
+            System.out.println("You lose");
+        }
+      }
+      // if playerMove is SCISSORS    
+      else
+      {
+        if(computerMove.equals(Game.PAPER))
+        {
+            wc++;
+            System.out.println("You win");
+        }
+        else
+        {
+           lc++;
+           System.out.println("You lose");
+        }
+      }
+      gc++;
+    }
+    
+    public static void showResults
+    {
+        System.out.println("No. of games played = " + gc);
+        System.out.println("No. of wins = " + wc);
+        System.out.println("No. of losses = " + lc);
+        System.out.println("No. of ties = " + tc);
+        System.out.println("Win rate = " + (float)wc/gc);
+    }
+    
+    // get computers next move (placeholder)   
+    public static String getComputerMove()
+    {
+        String computermove;
+        Random random = new Random();
+        int input = random.nextInt(3)+1;
+        if (input == 1)
+            computermove = Game.ROCK;
+        else if(input == 2)
+            computermove = Game.PAPER;
+        else
+            computermove = Game.SCISSORS;
+            
+        System.out.println("Computer move is: " + computermove);
+        System.out.println();
+        return computermove;    
+    }
+    
+    //get players next move
+    public static String getPlayerMove()
+    {
+        Scanner in = new Scanner(System.in);
+        String input = in.next();
+        String playermove = input.toUpperCase();
+        System.out.println("Player move is: "+ playermove);
+        return playermove;
+    }    
+}
+
+
+
+
+
+
+
+
+
+//algorithms: tentative
+//Initial runs:
+if(gc<5)
+    use random function//based on expected moves from previous testing, universal
+//computer saves all player moves, and keeps track of most used moves, least used, etc and plays accordingly
+int decision = random.nextInt(3);
+//additional randomness so player can't cheat the system
+if(decision.equals(0))
+    use normal random function
+else if (decision.equals(1))
+    predict based on most commonly used inputs
+else if (decision.equals(2))
+    predict based on past inputs
+    
